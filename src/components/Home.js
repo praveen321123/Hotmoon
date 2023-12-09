@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import ImgSlider from './ImgSlider'
 import Viewers from './Viewers'
@@ -24,15 +24,15 @@ const Home = () => {
    useEffect(() => {
     db.collection('movies').onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
-        switch(doc.data().type){
-          case 'recommend': recommends = [...recommends, {id: doc.id, ...doc.data()}]
-          console.log(recommends);
+        switch (doc.data().type) {
+          case 'recommend': recommends = [...recommends, {id: doc.id, ...doc.data()}];
           break;
-          case 'new': newDisneys = [...newDisneys, {id: doc.id, ...doc.data()}]
+          case 'new': newDisneys = [...newDisneys, {id: doc.id, ...doc.data()}];
           break;
-          case 'original': originals = [...originals,{id: doc.id, ...doc.data()}]
+          case 'original': originals = [...originals,{id: doc.id, ...doc.data()}];
           break;
-          case 'trending': trendings = [...trendings, {id: doc.id, ...doc.data()}]
+          case 'trending': trendings = [...trendings, {id: doc.id, ...doc.data()}];
+          break;
         }
       })
 
